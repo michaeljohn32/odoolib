@@ -28,7 +28,7 @@ print search_read_res
 
 # delete the creation
 delete = odoo.delete('res.partner', [created_id])
-print 'is the id deleted?:' + delete
+print 'is the id deleted?:' + str(delete)
 search_read_res = odoo.search_read('res.partner',['id', '=', created_id], {'fields': ['name', 'street2','title'], 'limit': 5})
 print search_read_res
 
