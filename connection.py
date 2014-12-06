@@ -1,7 +1,7 @@
 import xmlrpclib
 import config
 class Connection():
-    def __init__(self, root='http://localhost:8069', db = 'beta', user = 'admin', pwd= config.PASS):
+    def __init__(self, root='http://localhost:8070', db = 'beta', user = 'admin', pwd= config.PASS):
         self._common =  str(root) + '/xmlrpc/2/common'
         self._object = str(root) + '/xmlrpc/2/object'
         self._db = db
@@ -18,8 +18,9 @@ class Connection():
         return self._uid
     
     def execute(self, model_name, method_name, parameters_list = [[]], parameters_dict = {}):
+        # I use the # print statement for testing
+        print 'res = self._model.execute_kw(self._db,self.uid, self._pwd,"' + model_name +'","' + method_name + '",' + str(parameters_list) + ',' + str(parameters_dict) + ')'
         res = self._model.execute_kw(self._db, self.uid, self._pwd, model_name, method_name, parameters_list, parameters_dict)
-#        res = self._model.execute_kw(self._db, self._uid, self._pwd, 'res.partner', 'fields_get',[], {'attributes': ['string', 'help', 'type']})
         return res
         
     def getuids(self):
