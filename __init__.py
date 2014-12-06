@@ -1,0 +1,1 @@
+from odobject import OdooObject
