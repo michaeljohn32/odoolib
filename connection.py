@@ -22,31 +22,11 @@ class Connection():
         print 'res = self._model.execute_kw(self._db,self.uid, self._pwd,"' + model_name +'","' + method_name + '",' + str(parameters_list) + ',' + str(parameters_dict) + ')'
         res = self._model.execute_kw(self._db, self.uid, self._pwd, model_name, method_name, parameters_list, parameters_dict)
         return res
-        
-    def getuids(self):
-        # get all the userids
-        server = xmlrpclib.ServerProxy(self._object)
-        user_ids = server.execute(
-            self._db, 
-            self._uid, 
-            self._pwd, 
-            'res.users', 
-            'search',
-            []
-        )
-        print user_ids
-
-        users = server.execute(
-            self._db, 
-            self._uid, 
-            self._pwd, 
-            'res.users',
-            'read',
-            user_ids,
-            []
-        )
-        print users
-
+    def execute_const(self):
+        '''Use this to test against execute statement'''
+        #res = self._model.execute_kw(self._db,self.uid, self._pwd,"product.template","search",[[['name', 'like', '#DY14-814']]],{'limit': 5})
+        res = self._model.execute_kw(self._db,self.uid, self._pwd,"product.product","search",[[['name', 'like', 'DY14-814']]],{'limit': 5})
+        return res           
 
 
 
