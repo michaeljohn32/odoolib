@@ -13,7 +13,7 @@ print attrs
 search_read_res = odoo.search_read('res.partner',[], {'fields': ['name', 'country_id', 'comment'], 'limit': 5})
 print search_read_res
 
-created_id = 2459# odoo.create('res.partner', {'name': 'Jacoby Wanna'})
+created_id = odoo.create('res.partner', {'name': 'Jacoby Wanna'})
 print created_id
 
 search_for_new_guy = odoo.search_read('res.partner',['id', '=', [created_id]], {'fields': ['name', 'country_id', 'title'], 'limit': 5})
@@ -27,8 +27,8 @@ search_read_res = odoo.search_read('res.partner',['id', '=', created_id], {'fiel
 print search_read_res
 
 # delete the creation
-#delete = odoo.delete('res.partner', [created_id])
-#print delete
+delete = odoo.delete('res.partner', [created_id])
+print 'is the id deleted?:' + delete
 search_read_res = odoo.search_read('res.partner',['id', '=', created_id], {'fields': ['name', 'street2','title'], 'limit': 5})
 print search_read_res
 
