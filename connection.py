@@ -1,5 +1,6 @@
 import xmlrpclib
 import config
+from log import logger
 class Connection():
     def __init__(self, root='http://localhost:8070', db = 'beta', user = 'admin', pwd= config.PASS):
         self._common =  str(root) + '/xmlrpc/2/common'
