@@ -1,10 +1,11 @@
+from log import logger
 import connection
 class OdooObject():
     def __init__(self):
         self._conn = connection.Connection()
     def _encap_domain(self, domain):
-        print 'encap_domain length:' + str(len(domain))
-        print domain
+        logger.debug('encap_domain length:' + str(len(domain)))
+        logger.debug(domain)
         if(domain is not None):
             if(len(domain) >= 1):
                 #enclose in a list of list

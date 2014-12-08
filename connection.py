@@ -12,19 +12,18 @@ class Connection():
         # get the model
         self._model = xmlrpclib.ServerProxy(self._object) 
         self.uid = self._getuid()
-        print 'Logged in as %s (uid: %d)' % (user, self._uid)
+        logger.debug('Logged in as %s (uid: %d)' % (user, self._uid))
     #Get methods
     def _getuid(self):
         return self._uid
     
     def execute(self, model_name, method_name, parameters_list = [[]], parameters_dict = {}):
         # I use the # print statement for testing
-        print 'res = self._model.execute_kw(self._db,self.uid, self._pwd,"' + model_name +'","' + method_name + '",' + str(parameters_list) + ',' + str(parameters_dict) + ')'
+        logger.debug( 'res = self._model.execute_kw(self._db,self.uid, self._pwd,"' + model_name +'","' + method_name + '",' + str(parameters_list) + ',' + str(parameters_dict) + ')')
         res = self._model.execute_kw(self._db, self.uid, self._pwd, model_name, method_name, parameters_list, parameters_dict)
         return res
     def execute_const(self):
         '''Use this to test against execute statement'''
-        #res = self._model.execute_kw(self._db,self.uid, self._pwd,"product.template","search",[[['name', 'like', '#DY14-814']]],{'limit': 5})
         res = self._model.execute_kw(self._db,self.uid, self._pwd,"product.product","search",[[['name', 'like', 'DY14-814']]],{'limit': 5})
         return res           
 
