@@ -1,4 +1,10 @@
-mrp_iceproducts
+odoolib
 ===============
 
-Be sure to change the server settings and admin password in config.py
+
+Overview
+========
+========
+
+This library is a work in progress, but it does connect to an odoo db and allows for 
+setting some info.
