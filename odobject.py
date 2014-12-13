@@ -5,13 +5,23 @@ class OdooObject():
         self._conn = connection.Connection()
     def _encap_domain(self, domain):
         logger.debug('encap_domain length:' + str(len(domain)))
-        logger.debug(domain)
+        logger.debug('orig_domain:' + str(domain))
         if(domain is not None):
             if(len(domain) >= 1):
-                #enclose in a list of list
-                domain = [[domain]]
+                try:
+                    # see if we have a list of list (eg multiple domains)
+                    assert not isinstance(domain[0], basestring)
+                    domain = [domain]
+                except:
+                    if(domain[0] in ('&','|')):
+                        #assume polish notation
+                        domain = [domain]
+                    else:
+                        logger.debug('not list of list')
+                        domain = [[domain]]
             else:
-                domain = [domain]
+                domain [domain]
+        logger.debug('encap_domain:' + str(domain))
         return domain
     def search(self, model, domain=[], parameters = {}):
         domain = self._encap_domain(domain)

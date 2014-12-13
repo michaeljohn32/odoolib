@@ -35,7 +35,11 @@ print search_read_res
 print 'Product edits'
 
 #search for all products, but limit the result to 5
-search_res = odoo.search('product.product',['name','like','#DY14-814'], {'limit': 5})
+search_res = odoo.search('product.product',['&',['id', '>',0],['name','like','#DY14-814']], {'limit': 5})
+print search_res
+#search for all products, but limit the result to 5
+#checking that not polish notation works
+search_res = odoo.search('product.product',[['id', '>',0],['name','like','#DY14-814']], {'limit': 5})
 print search_res
 #count the number of products
 print odoo.search_count('product.product')
